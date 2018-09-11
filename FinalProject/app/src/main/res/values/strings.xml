@@ -4,4 +4,8 @@
     <string name="button_text">Tell Joke</string>
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="button_2_text">Press the button for another joke from Android Library!</string>
+    <string name="button_text_2">Another Joke</string>
+    <string name="button_text_3">Joke from API</string>
+    <string name="joke_from_api_text">Joke From API !</string>
 </resources>
