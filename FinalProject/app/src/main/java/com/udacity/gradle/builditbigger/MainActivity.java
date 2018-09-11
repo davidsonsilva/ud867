@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import br.com.davidson.silva.lib.JokeClass;
+import br.com.davidson.silva.mylibrary.JokeActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void tellJokeFromAndroidlibrary(View view) {
-        /*Intent intent = new Intent(this, JokeActivity.class);
+        Intent intent = new Intent(this, JokeActivity.class);
         JokeClass jokeSource = new JokeClass();
         String joke = jokeSource.tellMeAJoke();
         intent.putExtra(JokeActivity.JOKE_KEY, joke);
-        startActivity(intent);*/
+        startActivity(intent);
     }
 }
