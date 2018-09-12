@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import static br.com.davidson.silva.mylibrary.JokeActivity.JOKE_KEY;
+
 public class JokeActivityFragment extends Fragment {
     public JokeActivityFragment() {
     }
@@ -16,11 +18,14 @@ public class JokeActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_joke, container, false);
+        TextView jokeTextView = root.findViewById(R.id.joke_textview);
+
         Intent intent = getActivity().getIntent();
-        String joke = intent.getStringExtra(JokeActivity.JOKE_KEY);
-        TextView jokeTextView = (TextView) root.findViewById(R.id.joke_textview);
-        if (joke != null && joke.length() != 0) {
+        if (intent != null && intent.hasExtra(JOKE_KEY)) {
+            String joke = intent.getStringExtra(JOKE_KEY);
             jokeTextView.setText(joke);
+        } else {
+            jokeTextView.setText(R.string.error_no_joke);
         }
 
         return root;

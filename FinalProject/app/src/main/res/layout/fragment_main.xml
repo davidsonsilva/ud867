@@ -68,6 +68,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
+        android:onClick="tellJokeFromAPI"
         android:text="@string/joke_from_api_text" />
 
     <Button
@@ -77,6 +78,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/instructions_text_view"
+        android:onClick="tellJokeFromAPI"
         android:text="@string/button_text_3"/>
 
     <ProgressBar
@@ -85,6 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:visibility="invisible"
         android:layout_below="@+id/button3"/>
 
 

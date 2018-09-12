@@ -6,18 +6,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import br.com.davidson.silva.lib.JokeClass;
 import br.com.davidson.silva.mylibrary.JokeActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BackendClient.Callback{
+
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mProgressBar = findViewById(R.id.progressBar);
     }
 
 
@@ -60,5 +65,24 @@ public class MainActivity extends AppCompatActivity {
         String joke = jokeSource.tellMeAJoke();
         intent.putExtra(JokeActivity.JOKE_KEY, joke);
         startActivity(intent);
+    }
+
+    private void tellJokeFromApi(View view){
+        new BackendClient().execute(this);
+    }
+
+    public void tellJokeFromAPI(View view) {
+        mProgressBar.setVisibility(View.VISIBLE);
+        tellJokeFromApi(view);
+    }
+
+    @Override
+    public void onDone(String result) {
+        Intent intent = new Intent(this, JokeActivity.class);
+        if (result != null) {
+            intent.putExtra(JokeActivity.JOKE_KEY, result);
+        }
+        startActivity(intent);
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 }
