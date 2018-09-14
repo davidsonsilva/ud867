@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity implements BackendClient.Cal
      * @author Davidson Silva
      */
 
-    public void tellJoke() {
+    public void tellJoke(View view) {
         JokeClass myCatJoke = new JokeClass();
         Toast.makeText(this, myCatJoke.tellMeAJoke(), Toast.LENGTH_LONG).show();
     }
 
 
-    public void tellJokeFromAndroidlibrary() {
+    public void tellJokeFromAndroidlibrary(View view) {
         Intent intent = new Intent(this, JokeActivity.class);
         JokeClass jokeSource = new JokeClass();
         String joke = jokeSource.tellMeAJoke();
@@ -66,13 +66,13 @@ public class MainActivity extends AppCompatActivity implements BackendClient.Cal
         startActivity(intent);
     }
 
-    private void tellJokeFromApi(){
+    private void tellJokeFromApi(View view){
         new BackendClient().execute(this);
     }
 
-    public void tellJokeFromAPI() {
+    public void tellJokeFromAPI(View view) {
         mProgressBar.setVisibility(View.VISIBLE);
-        tellJokeFromApi();
+        tellJokeFromApi(view);
     }
 
     @Override

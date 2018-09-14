@@ -10,43 +10,12 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
-import android.support.test.espresso.IdlingResource;
 
-public class BackendClient extends AsyncTask<BackendClient.Callback, Void, String>
-        implements IdlingResource {
+
+public class BackendClient extends AsyncTask<BackendClient.Callback, Void, String>{
 
     private MyApi mApi = null;
     private Callback mCallback = null;
-    private boolean mUnderEspresso = false;
-    private final AtomicBoolean mIsIdleNow = new AtomicBoolean(true);
-    private volatile ResourceCallback mResourceCallback;
-
-    @Override
-    public String getName() {
-        return this.getClass().getName();
-    }
-
-    @Override
-    public boolean isIdleNow() {
-        return mIsIdleNow.get();
-    }
-
-    @Override
-    public void registerIdleTransitionCallback(ResourceCallback callback) {
-        mResourceCallback = callback;
-    }
-
-    void setUnderEspresso() {
-        mUnderEspresso = true;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        if (mUnderEspresso) {
-            setIdleState(false);
-        }
-    }
 
     @Override
     protected String doInBackground(Callback... callbacks) {
@@ -81,16 +50,6 @@ public class BackendClient extends AsyncTask<BackendClient.Callback, Void, Strin
     protected void onPostExecute(String joke) {
         if (mCallback != null) {
             mCallback.onDone(joke);
-            if (mUnderEspresso) {
-                setIdleState(true);
-            }
-        }
-    }
-
-    private void setIdleState(boolean isIdleNow) {
-        mIsIdleNow.set(isIdleNow);
-        if (isIdleNow && mResourceCallback != null) {
-            mResourceCallback.onTransitionToIdle();
         }
     }
 

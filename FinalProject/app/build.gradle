@@ -71,7 +71,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation 'com.google.api-client:google-api-client:1.25.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
@@ -84,15 +83,8 @@ dependencies {
     implementation project(path: ':javalib')
     implementation project(path: ':jokeandroidlibrary')
 
-    androidTestImplementation 'com.android.support:support-annotations:26.1.0'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test:rules:1.0.1'
-    androidTestImplementation('com.android.support.test.espresso:espresso-intents:3.0.1', {
-        exclude group: 'com.google.code.findbugs'  // https://stackoverflow.com/a/40970308
-    })
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.google.code.findbugs'  // https://stackoverflow.com/a/40970308
-    })
-    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.1'
+    //androidTestImplementation 'com.android.support:support-annotations:26.1.0'
+
+    freeImplementation 'com.google.android.gms:play-services-ads:15.0.1'
 
 }
