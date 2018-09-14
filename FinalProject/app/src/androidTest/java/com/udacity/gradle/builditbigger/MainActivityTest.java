@@ -2,7 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.support.test.espresso.Espresso;
+import android.support.test.espresso.IdlingRegistry;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -23,7 +23,6 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.isInte
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -44,11 +43,7 @@ public class MainActivityTest {
     public void registerIdlingResource() {
         mBackendClient = new BackendClient();
         mBackendClient.setUnderEspresso();
-        Espresso.registerIdlingResources(mBackendClient);
-    }
-
-    @After
-    public void tearDown() throws Exception {
+        IdlingRegistry.getInstance().register(mBackendClient);
     }
 
     @Test
@@ -68,7 +63,7 @@ public class MainActivityTest {
     @After
     public void unregisterIdlingResource() {
         if (mBackendClient != null) {
-            Espresso.unregisterIdlingResources(mBackendClient);
+            IdlingRegistry.getInstance().unregister(mBackendClient);
         }
     }
 }

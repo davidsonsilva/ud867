@@ -19,7 +19,7 @@ public class BackendClient extends AsyncTask<BackendClient.Callback, Void, Strin
     private MyApi mApi = null;
     private Callback mCallback = null;
     private boolean mUnderEspresso = false;
-    private AtomicBoolean mIsIdleNow = new AtomicBoolean(true);
+    private final AtomicBoolean mIsIdleNow = new AtomicBoolean(true);
     private volatile ResourceCallback mResourceCallback;
 
     @Override

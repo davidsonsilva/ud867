@@ -12,9 +12,7 @@ import br.com.davidson.silva.lib.JokeClass;
         version = "v1",
         namespace = @ApiNamespace(
                 ownerDomain = "backend.builditbigger.gradle.udacity.com",
-                ownerName = "backend.builditbigger.gradle.udacity.com",
-                packagePath = ""
-        )
+                ownerName = "backend.builditbigger.gradle.udacity.com" )
 )
 public class MyEndpoint {
     @ApiMethod(name = "getJoke")

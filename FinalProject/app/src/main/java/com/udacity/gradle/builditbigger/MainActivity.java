@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -51,15 +50,15 @@ public class MainActivity extends AppCompatActivity implements BackendClient.Cal
     /**
      * Tell joke from library
      * @author Davidson Silva
-     * @param view
      */
-    public void tellJoke(View view) {
+
+    public void tellJoke() {
         JokeClass myCatJoke = new JokeClass();
         Toast.makeText(this, myCatJoke.tellMeAJoke(), Toast.LENGTH_LONG).show();
     }
 
 
-    public void tellJokeFromAndroidlibrary(View view) {
+    public void tellJokeFromAndroidlibrary() {
         Intent intent = new Intent(this, JokeActivity.class);
         JokeClass jokeSource = new JokeClass();
         String joke = jokeSource.tellMeAJoke();
@@ -67,13 +66,13 @@ public class MainActivity extends AppCompatActivity implements BackendClient.Cal
         startActivity(intent);
     }
 
-    private void tellJokeFromApi(View view){
+    private void tellJokeFromApi(){
         new BackendClient().execute(this);
     }
 
-    public void tellJokeFromAPI(View view) {
+    public void tellJokeFromAPI() {
         mProgressBar.setVisibility(View.VISIBLE);
-        tellJokeFromApi(view);
+        tellJokeFromApi();
     }
 
     @Override
